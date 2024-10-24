@@ -106,7 +106,7 @@
   <script>
     function validarCupom() {
       const botaoCupom = document.getElementById("botaoCupom");
-      const cupom = document.getElementById("cupomInput").value.trim();
+      const cupom = document.getElementById("cupomInput").value.trim().toLowerCase(); // Normaliza para letras minúsculas
       const mensagemCupom = document.getElementById("mensagemCupom");
 
       // Adiciona o spinner no botão
@@ -115,7 +115,7 @@
       botaoCupom.disabled = true;
 
       setTimeout(() => {
-        if (cupom === "karol2024") {
+        if (cupom === "karol2024") { // Mantém o cupom sempre em minúsculas
           document.getElementById("oferta").style.display = "none";
           document.getElementById("finalizacao").style.display = "block";
         } else {
@@ -129,6 +129,7 @@
       }, 2500); // Simulação de 2.5 segundos para validação
     }
   </script>
+
 </body>
 
 </html>
