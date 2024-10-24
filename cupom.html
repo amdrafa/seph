@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link href="favicon.ico" rel="shortcut icon" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/all.min.css" />
+  <script async src="js/fbevents.js"></script>
+  <script src="js/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="faviconERN.ico" />
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <title>Sephora - Oferta Exclusiva</title>
+
+  <style>
+    .btn-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .btn-loading .spinner-border {
+      width: 1.2rem;
+      height: 1.2rem;
+      margin-left: 10px;
+    }
+
+    .finalizacao {
+      display: none;
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .finalizacao h1 {
+      color: #1e1f1e;
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .finalizacao p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .finalizacao__botao button {
+      font-size: 1.1rem;
+      padding: 15px;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <i class="fa-solid fa-bars" style="color: black"></i>
+    <img src="images/logo-sephora.png" alt="Logo Sephora" />
+  </header>
+
+  <main>
+    <div class="card oferta" id="oferta">
+      <div class="card__logo">
+        <img src="images/IMG_8698.JPG" alt="Oferta Sephora" />
+      </div>
+      <div class="card__descricao">
+        <h2>
+          Parabéns! Você está a um passo de garantir seu desconto exclusivo.
+        </h2>
+        <p>
+          Insira abaixo o <strong>código de desconto</strong> e aproveite a
+          chance de economizar nos produtos mais desejados da Sephora!
+        </p>
+      </div>
+      <div class="card__cupom">
+        <input type="text" id="cupomInput" class="form-control" placeholder="Digite seu cupom" />
+        <button id="botaoCupom" class="btn btn-primary mt-2 btn-loading" onclick="validarCupom()">
+          Aplicar Cupom
+        </button>
+        <div id="mensagemCupom" class="mt-3"></div>
+      </div>
+    </div>
+
+    <div class="finalizacao" id="finalizacao">
+      <span style="font-size: xx-large;">🎉🎉🎉</span>
+      <h1 style="font-weight: bold;">CUPOM <span style="color: #4caf50;">VALIDADO</span> COM SUCESSO! </h1>
+      </h1>
+      <p>
+        Você acaba de ganhar <strong>100% de desconto</strong> em sua próxima compra na Sephora! Não perca essa chance
+        única de garantir seus produtos favoritos com um preço especial.
+      </p>
+      <div class="finalizacao__botao">
+        <a href="/index.html"><button class="btn btn-success">
+            <i class="fa-solid fa-gift"></i> Resgatar Oferta
+          </button></a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function validarCupom() {
+      const botaoCupom = document.getElementById("botaoCupom");
+      const cupom = document.getElementById("cupomInput").value.trim();
+      const mensagemCupom = document.getElementById("mensagemCupom");
+
+      // Adiciona o spinner no botão
+      botaoCupom.innerHTML =
+        'Aplicando Cupom <div class="spinner-border text-light" role="status"></div>';
+      botaoCupom.disabled = true;
+
+      setTimeout(() => {
+        if (cupom === "2024") {
+          document.getElementById("oferta").style.display = "none";
+          document.getElementById("finalizacao").style.display = "block";
+        } else {
+          mensagemCupom.innerHTML =
+            '<span style="color: red;">❌ Cupom inválido. Por favor, tente novamente.</span>';
+        }
+
+        // Restaura o botão original
+        botaoCupom.innerHTML = "Aplicar Cupom";
+        botaoCupom.disabled = false;
+      }, 2500); // Simulação de 2.5 segundos para validação
+    }
+  </script>
+</body>
+
+</html>
